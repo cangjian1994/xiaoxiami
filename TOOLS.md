@@ -1,40 +1,15 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - DevClaw Tools
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+All DevClaw tools are registered as OpenClaw plugin tools. Use the tool schemas for parameter details.
 
-## What Goes Here
+## Config management
 
-Things like:
+DevClaw config files (workflow.yaml, prompts) are **write-once**: created on first setup, never overwritten on restart. Your customizations are always preserved.
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- `config_diff` — Compare your workflow.yaml against the built-in default. Shows what you've customized and what's new in updates.
+- `config_reset` — Reset config files to defaults (creates .bak backups). Supports `target`: "workflow", "prompts", or "all".
 
-## Examples
+## Project-specific overrides
 
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+To override tool behavior for a specific project, create prompt files in:
+`devclaw/projects/<name>/prompts/<role>.md`
